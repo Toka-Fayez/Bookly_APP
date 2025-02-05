@@ -1,9 +1,11 @@
 import 'package:booklyapp/constant.dart';
+import 'package:booklyapp/core/utils/app_router.dart';
 import 'package:booklyapp/core/utils/asset_data.dart';
 import 'package:booklyapp/feateures/home/presentation/view/home_view.dart';
 import 'package:booklyapp/feateures/splash/presentation/views/widgets/text_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -21,8 +23,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
     initSlideAnimation();
     navigateToHome();
-    }
-
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +44,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.dispose();
     super.dispose();
   }
-  
+
   void navigateToHome() {
-    Future.delayed(const Duration(milliseconds: 6000),(){
-      Get.to(const HomeView(),transition: Transition.fade,
-    duration: kDuration,
-     );}
-     );
+    Future.delayed(const Duration(milliseconds: 6000), () {
+      GoRouter.of(context).push(AppRouter.kHomeView);
+    });
   }
-    
-  
 
   void initSlideAnimation() {
     animationController = AnimationController(
@@ -60,7 +57,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       duration: const Duration(seconds: 3),
     );
     slidingAnimation = Tween<Offset>(
-      begin: const Offset(0, 6),
+      begin: const Offset(0, 2),
       end: const Offset(0, 0),
     ).animate(animationController);
     animationController.forward();

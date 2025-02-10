@@ -1,10 +1,8 @@
-import 'package:equatable/equatable.dart';
+class RetailPrice {
+	double? amount;
+	String? currencyCode;
 
-class RetailPrice extends Equatable {
-	final double? amount;
-	final String? currencyCode;
-
-	const RetailPrice({this.amount, this.currencyCode});
+	RetailPrice({this.amount, this.currencyCode});
 
 	factory RetailPrice.fromJson(Map<String, dynamic> json) => RetailPrice(
 				amount: (json['amount'] as num?)?.toDouble(),
@@ -15,7 +13,4 @@ class RetailPrice extends Equatable {
 				'amount': amount,
 				'currencyCode': currencyCode,
 			};
-
-	@override
-	List<Object?> get props => [amount, currencyCode];
 }

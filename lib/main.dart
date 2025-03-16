@@ -1,9 +1,13 @@
 import 'package:booklyapp/constant.dart';
 import 'package:booklyapp/core/utils/app_router.dart';
+import 'package:booklyapp/feateures/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 
 void main() {
+  Hive.registerAdapter(BookEntityAdapter());
+  Hive.openBox(kFeaturedBox);
   runApp(const MyApp());
 }
 
